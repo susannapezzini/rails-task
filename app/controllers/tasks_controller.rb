@@ -12,9 +12,26 @@ class TasksController < ApplicationController
     @task.save
     redirect_to tasks_path(@task)
   end
-
+  
   def show
     @task = Task.find(params[:id])
+  end
+  
+  def edit
+    @task = Task.find(params[:id])
+  end
+  
+  def update
+    @task = Task.find(params[:id])
+    @task.update(task_params)
+    redirect_to tasks_path(@task)
+  end
+  
+  def destroy
+    # raise
+    @task = Task.find(params[:id])
+    @task.destroy
+    redirect_to root_path
   end
 
   private
